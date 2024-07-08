@@ -1,0 +1,60 @@
+:root {
+  --bluem: #031A6B;
+  --light-orange: #FFDAB9; 
+}
+
+.filter-container-custom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.btn-custom {
+  background-color: white;
+  color: var(--bluem);
+  border: 1px solid var(--bluem);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem; 
+  border-radius: 0;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active {
+  background-color: var(--bluem);
+  color: white;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.dropdown-menu-custom {
+  font-size: 1rem; 
+  border-radius: 0;
+  background-color: white;
+  border: 1px solid var(--bluem);
+  border-radius: 0.25rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-10px);
+  opacity: 0;
+  display: block; /* Ensures the element takes up space for smooth transition */
+  visibility: hidden; /* Hides the element by default */
+}
+
+.show .dropdown-menu-custom {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible; /* Makes the element visible when shown */
+}
+
+.dropdown-item-custom {
+  color: var(--bluem);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item-custom:hover {
+  background-color: var(--light-orange); /* Light orange background on hover */
+  color: var(--bluem);
+}

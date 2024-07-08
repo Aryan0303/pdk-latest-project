@@ -1,0 +1,31 @@
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+.breadcrumb-custom {
+    border-bottom: 1px solid #dddddd;
+    font-size: 15px;
+}
+.breadcrumb-custom .breadcrumb-item a {
+    color: var(--bluem);
+}
+
+.breadcrumb-custom .breadcrumb-item.active {
+    color: var(--orangem);
+    font-weight: bold;
+}
+@media (min-width: 992px) {
+    .breadcrumb-custom ol {
+        margin-left: 8rem; 
+    }
+}
+@media (max-width: 992px) {
+    .breadcrumb-custom ol {
+        margin-left: 1rem; 
+    }
+}
+@media (min-width: 1024px) and (max-width: 1124px) {
+    .breadcrumb-custom ol {
+        margin-left: 7rem; /* New margin for screens from 1024px to 1124px */
+    }
+}

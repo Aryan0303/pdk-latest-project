@@ -1,0 +1,68 @@
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+  
+  .card-body-top-categories {
+    align-items: center !important;
+    width: max-content;
+    margin-top: -20px;
+  }
+  .tdc-product-card {
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 13rem; 
+  }
+  
+  .tdc-product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image-tdc {
+    padding: 5%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-description {
+    width: max-content;
+    font-size: 1rem;
+    color: var(--bluem);
+    font-weight: bold;
+    /* margin-top: 10px; */
+    transition: color 0.2s ease-in-out; 
+  }
+  
+  /* Change the product-description color on card hover */
+  .tdc-product-card:hover .product-description {
+    color: var(--orangem);
+  }
+  
+  /* Center the product description within the row */
+  .tdc-product-card .card-body .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    text-align: center;
+  }
+  
+ 
+  /* Responsive width for card */
+  @media (max-width: 992px) {
+    .tdc-product-card {
+      width: 10rem; 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tdc-product-card {
+      width: 12rem; 
+    }
+  }
+  
+  
+ 
+  

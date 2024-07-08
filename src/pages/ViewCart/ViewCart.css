@@ -1,0 +1,84 @@
+.view-cart {
+    margin-top: 20px;
+  }
+  
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+  }
+  
+  .cart-table th {
+    background-color: #f1f1f1; /* Adjust this color to match the header background */
+    /* border-bottom: 2px solid #ddd; This is optional if you want a border under the header */
+  }
+  
+  .cart-table td {
+    background-color: transparent !important; 
+    border: none;
+    color: #031A6B;
+  }
+  
+  .cart-item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  
+  .product-details-table {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-input-table {
+    width: 60px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .remove-button {
+    font-size: 2em !important;
+    color: red;
+    font-size: 20px;
+    border: none;
+    background: none;
+  }
+  
+  .total {
+    text-align: right;
+    
+  }
+  
+  .view-cart {
+    width: 100%;
+  }
+  
+ 
+  
+ 
+  
+  /* .cart-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  } */
+  
+  
+  
+  .apply-coupon-btn, .update-cart-btn {
+    background-color: #031A6B;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  

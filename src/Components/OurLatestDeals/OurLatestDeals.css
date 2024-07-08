@@ -1,0 +1,68 @@
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+  
+  /* Default styling for desktop */
+  .old-product-card {
+    width: 9.5rem !important;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .old-product-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  .custom-col-oldeals {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    flex: 0 0 auto;
+    width: 12.5%;
+    margin-bottom: 20px;
+    display: flex;
+  }
+  
+  .old-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: var(--bluem);
+    margin-bottom: auto;
+  }
+  
+  .card-price {
+    font-size: 1rem;
+    color: var(--orangem);
+    margin-top: auto;
+  }
+  
+  /* Tablet screens */
+  @media (max-width: 992px) {
+    .custom-col-oldeals {
+      width: 25%;
+    }
+    .old-product-card {
+      width: 10rem !important;
+    }
+  }
+  
+  /* Mobile screens */
+  @media (max-width: 768px) {
+    .custom-col-oldeals {
+      width: 50%;
+    }
+    .old-product-card {
+      width: 13rem !important;
+    }
+  }
+  

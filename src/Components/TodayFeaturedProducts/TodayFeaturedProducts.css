@@ -1,0 +1,32 @@
+.product-card {
+    width: 10rem;
+    margin: 0 auto; 
+  }
+  .tfp-product-card.card {
+    border-radius: 0;
+  }
+
+  .product-image {
+    width: 100%; 
+  }
+  
+  @media (max-width: 464px) {
+    .tfp-product-card{
+      width: 11rem !important;
+      height: 20rem;
+    }
+    
+   
+    .product-image {
+      width: 100%; 
+      margin: 0 auto; 
+    }
+  
+    .custom-col-tfp {
+      flex: 1 1 100%; 
+      max-width: 100%; 
+      display: flex; 
+      justify-content: center; 
+    }
+  }
+  

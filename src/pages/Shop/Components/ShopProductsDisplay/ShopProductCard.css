@@ -1,0 +1,35 @@
+
+.product-card-shop {
+    border-radius: 0;
+    box-shadow: 0 0 5px 0 rgba(106.35625, 106.35625, 106.35625, .19);
+    background-color: #F8FEFF;
+    max-width: max-content;
+    margin-bottom: 20px;
+    height: 18rem;
+    width: 13rem;
+    /* margin: 0 auto */
+  }
+  .product-card-shop .card-img-top {
+    padding: 8px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .product-title-display {
+    font-size: 1rem;
+    color: #031A6B;
+  }
+  
+  .product-price {
+    font-size: 1rem;
+    color: #ff8c00;
+  }
+  .bodycard {
+    padding: 0em 0em 1em 1em !important;
+    max-width: max-content !important;
+  }  
+  @media (max-width: 768px) {
+    .product-card-shop {
+      width: 12rem;
+    }
+  }

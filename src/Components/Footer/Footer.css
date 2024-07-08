@@ -1,0 +1,133 @@
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+
+.backgroundoffooter {
+    background-image: url('../../images/footerbqackgroundd.png'); 
+    background-size: cover; 
+    /* background-position: center; */
+    /* padding: 20px 0; */
+}
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+
+.backgroundoffooter {
+    background-image: url('../../images/footerbqackgroundd.png'); 
+    background-size: cover; 
+    /* background-position: center; */
+    /* padding: 20px 0; */
+}
+.footer-img {
+    max-width: 12em; 
+    height: auto;
+}
+
+.subscribe-text {
+
+    display: flex;
+    /* width: max-content; */
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--bluem);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+}
+
+.emailTtext{
+    background-color: #fff !important;
+    width: 100% !important; 
+    max-width: 300px !important; 
+    font-size: 1.35rem !important;
+    border-radius: 0 !important; 
+}
+.f-img{
+    max-width: 40% !important;
+}
+.f-text{
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+
+.btn-foot{
+    height: 3rem;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 0;
+    color: white;
+    background-color: var(--bluem);
+    border: none;
+}
+.btn-foot:hover,
+.btn-foot:focus {
+    background-color: var(--orangem); 
+    color: white;
+}
+.textli {
+    color: var(--bluem);
+}
+.ftext {
+    color: var(--bluem);
+}
+ li a.textli:hover,
+ li a.textli:focus {
+    color: var(--orangem);
+    text-decoration: none;
+}
+.row {
+    justify-content: space-around !important;
+}
+.row.row1 {
+    height: 8rem;
+}
+.row-footer ul > li + li {
+    margin-top: 2rem;
+}
+
+/* Default: Show footer-lg, hide footer-sm */
+.footer-sm {
+    display: none;
+}
+.col-md-4.emailform.text-center {
+    margin-top: -2rem;
+}
+h5.font-weight-bold.li {
+    color: var(--bluem);
+}
+.background-footer{
+    background-color: #eafeff;
+}
+/* On small screens: Hide footer-lg, show footer-sm */
+@media (max-width: 767px) {
+    .footer-lg {
+        display: none;
+    }
+    .footer-sm {
+        display: block;
+    }
+    .subscribe-text{
+        font-size: 20px;
+    }
+    .emailTtext{
+        max-width: 0px !important;
+    }
+    .emailTtext-ft{
+        background-color: #fff !important;
+        width: 100% !important;
+        font-size: 15px !important;
+        border-radius: 0 !important;
+    }
+    .btn-foot{
+        border-radius: 4px;
+        height: 2.2rem;
+    }
+}
+.footer-email-input {
+    width: max-content;
+}

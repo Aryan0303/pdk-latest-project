@@ -1,0 +1,25 @@
+
+.main-image {
+    width: 100%; /* Adjust the width as needed */
+    max-width: 100%; /* Ensures image doesn't exceed its container */
+    height: 25em; /* Maintains aspect ratio */
+    display: block; /* Ensures image is treated as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+  }
+  
+  .gallery-carousel .gallery-item {
+    padding: 0 5px; /* Adjust the value as needed for spacing */
+  }
+
+
+
+/* Additional styling for the gallery carousel */
+.gallery-image {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-carousel {
+  margin-top: 20px;
+}

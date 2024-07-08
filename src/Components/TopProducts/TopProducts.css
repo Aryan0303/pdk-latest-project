@@ -1,0 +1,25 @@
+.product-card {
+    width: 10rem;
+    margin: 0 auto; 
+  }
+  
+ 
+  @media (max-width: 464px) {
+    .product-card {
+      width: 20rem !important; 
+      height: 20rem;
+    }
+  
+    .product-image-topproducts {
+      width: 60%; 
+      margin: 0 auto; 
+    }
+  
+    .custom-col {
+      flex: 1 1 100%; 
+      max-width: 100%; 
+      display: flex; 
+      justify-content: center; 
+    }
+  }
+  

@@ -1,0 +1,16 @@
+
+.carousel-indicators [data-bs-target] {
+    display: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none;
+}
+.textbold{
+    color: var(--bluem);
+}
+.textHeading{
+font-size: 30px;
+font-weight: 600;
+}

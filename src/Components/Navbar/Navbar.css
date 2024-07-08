@@ -1,0 +1,228 @@
+:root {
+    --bluem: #031A6B;
+    --orangem: #FF9402;
+  }
+  /* Navbar.css */
+
+  /* Styles for desktop navbar */
+  .navbar-lg .navbar-brand img {
+    max-height: 40px;
+  }
+
+  .navbar-lg .nav-link, .navbar-lg .nav-item {
+    padding: 0 10px;
+  }
+
+  /* Styles for mobile navbar */
+  .navbar-sm .navbar-brand img {
+    max-height: 2.7rem;
+  }
+
+  .navbar-sm .navbar-toggle {
+    border: none;
+    font-size: 1.5rem;
+  }
+
+  .navbar-sm .nav-link i {
+    font-size: 1.25rem;
+    margin: 0 5px;
+  }
+
+  /* Styles for offcanvas sidebar */
+  .offcanvas-header {
+    border-bottom: 1px solid #ddd;
+  }
+  .nav-bgr {
+    background: #F7F9F9 !important;
+  }
+
+  .offcanvas-body .nav-link, .offcanvas-body .nav-item {
+    padding: 10px 4px;
+    font-size: 1rem;
+  }
+
+  .offcanvas-body .nav-link:hover, .offcanvas-body .nav-item:hover {
+    background-color: var(--bluem);
+    color: var(--orangem);
+  }
+
+  .offcanvas-body .nav-dropdown {
+    padding-left: 20px;
+  }
+
+  /* Sidebar logo */
+  .sidebar-logo {
+    max-height: 40px;
+  }
+
+  .offcanvas-body .nav-link, .offcanvas-body .nav-dropdown-item {
+    font-weight: 500;
+  }
+
+  /* Footer social icons */
+  .footer-social-icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+  }
+
+  .footer-social-icons a {
+    font-size: 1.5rem;
+    color: var(--bluem);
+  }
+
+  .footer-social-icons a:hover {
+    color: var(--orangem);
+  }
+  .dropdown-toggle::after{
+    display: none;
+  }
+  .nav-link,
+  .nav-item {
+    padding: 0 10px;
+    color: var(--bluem) !important ; /* Set default color to #031A6B */
+  }
+
+  .nav-link:hover,
+  .nav-item:hover{
+    color: var(--orangem) !important; /* Change color to #FF9402 on hover and active states */
+  }
+  .offcanvas-header {
+    padding: 32px 30px 32px 30px;
+  }
+  .offcanvas.offcanvas-start {
+    width: 300px !important;
+  }
+  div#offcanvasCart {
+    width: 300px;
+  }
+  button.btn-close {
+    font-size: 16px;
+    top: 20px;
+    color: var(--bluem);
+    background-color: var(--orangem);
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    opacity: 1 !important;
+
+  }
+  a.sidebar-start.nav-link {
+    padding-left: -0.5rem;
+}
+.offcanvas-body .nav-link, .offcanvas-body .nav-item {
+    padding:15px 0 15px 20px;
+    font-size: 18px;
+    letter-spacing: 0;
+    border-width: 0 0 .5px;
+}
+.navbar-nav .nav-link {
+  font-size: 18px;
+  font-weight: 600;
+  padding-right: 0 !important;
+  padding-left: 10px !important;
+}
+.navbar .nav-link .badge-mob {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background-color: var(--bluem);
+  color: white;
+  padding: 0.25em 0.5em;
+  border-radius: 50%;
+  font-size: 0.75em;
+}
+.navbar .nav-link .badge-deskptop {
+  position: absolute;
+  bottom: 25px;
+  /* right: 0px; */
+  background-color: var(--bluem);
+  color: white;
+  padding: 0.25em 0.5em;
+  border-radius: 50%;
+  font-size: 0.75em;
+}
+.main-nav-bar-item {
+  font-size: 18px;
+  font-weight: 600;
+}
+.border-bottom {
+  border-width: 0 0 0.5px;
+  border-style: solid;
+  border-color: #ddd; /* Adjust border color as needed */
+}
+.off-canvas-body-side-bar {
+  padding: 0px !important;
+}
+.accordion-button{
+  
+  font-size: 18px;
+}
+/* Ensure specificity and correct targeting for Accordion Header */
+.accordion .accordion-item .accordion-header .accordion-button {
+  background-color: var(--bluem); /* Set default background color */
+  color: var(--orangem); /* Set default text color */
+  font-weight: 500; /* Set font weight as needed */
+  cursor: pointer; /* Add pointer cursor to indicate clickability */
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-item-quantity {
+  color: #777;
+}
+
+.remove-item-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-subtotal {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.cart-actions .btn {
+  width: 48%;
+}
+.view-cart-btncart {
+  color: white;
+  font-size: 13px;
+  padding: 12px;
+  background-color: #031A6B;
+  border: none;
+}
+.checkout-btn-cart {
+  color: white;
+  font-size: 13px;
+  padding: 12px;
+  background-color: #FF9402;
+  border: none;
+
+}
+.cart-subtotal{
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}

@@ -1,0 +1,12 @@
+.label-{
+    font-weight: 700;
+    color: black;
+}
+.size-button{
+    font-size: 16px;
+    margin-right: 0.5em;
+    border-radius: 6px;
+    border-color: rgb(103, 103, 103);
+    background-color: #fff;
+    padding: 4px;
+}

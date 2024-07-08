@@ -1,0 +1,115 @@
+{
+    "title": "Adjustable Dog Collar",
+    "minPrice": 11.99,
+    "maxPrice": 15.99,
+    "sku": "PDK-313(1)",
+    "shortDescription": "High-quality materials: the comfort collar is made of specially selected materials for toughness and durability.\r\nReflective stitching: stay safe and be spotted during your morning and evening walks.\r\nHeavy-duty and lightweight-designed for all dog breeds, the comfortable collar is designed to maintain a lightweight design.\r\nSafety buckle: The side release buckle is made of high-quality, environmentally friendly plastic with a safety lock to prevent accidental opening of the collar\r\nNote: Please use a soft ruler to measure the widest part of the dog’s neck and add 1 inch to get the correct length.",
+    "longDescription": "Look into our amazing selection of adjustable dog collar! We understand that every pup is unique, and that’s why we offer a wide range of sizes and styles to ensure your furry friend is comfortable and secure on every walk, adventure, or playtime.\r\n\r\nThe Benefits of an Adjustable Dog Collar\r\nPerfect Fit, Guaranteed: No more frustration with ill-fitting collars! Our adjustable collars grow with your pup, offering a comfortable fit throughout their life stages.\r\nSafety First: A properly fitted collar is essential for safe walks and outings. An adjustable collar allows for a snug, secure fit that prevents slipping or escape attempts.\r\nUnmatched Comfort: Our adjustable collars are designed with your dog’s comfort in mind. Soft, padded materials and smooth buckles ensure a pleasant wearing experience for your furry best friend.\r\nStyle for Every Pup: Adjustable collars don’t have to be boring! We offer a variety of colors, patterns, and even personalized options to let your dog’s unique personality shine.\r\n\r\nShop with Confidence\r\nWe are committed to providing high-quality, durable dog collars that you and your pup can love. Browse our selection today and find the perfect adjustable collar for your furry companion!\r\n\r\nProduct Specification\r\nMaterial: Nylon\r\nType: Dogs\r\nSeason: All seasons\r\nProduct Name:  Dog Collar Adjustable\r\nColor: Black, Brown, Khaki and Army Green\r\nFeatures: 5-hole gear\r\nSize: M, L, XL",
+    "category": 1,
+    "subcategory": 17,
+    "mainImage": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+    "galleryImages": [
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+      "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp"
+    ],
+    "sizes": [
+      {
+        "size": "Large",
+        "colors": [
+          {
+            "color": "Army Green",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+            "price": 13.99,
+            "stock": 20
+          },
+          {
+            "color": "Black",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+            "price": 13.99,
+            "stock": 20
+          },
+          {
+            "color": "Khaki",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+            "price": 13.99,
+            "stock": 20
+          },
+          {
+            "color": "Khaki + Camo",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp",
+            "price": 13.99,
+            "stock": 20
+          }
+        ]
+      },
+      {
+        "size": "Medium",
+        "colors": [
+          {
+            "color": "Army Green",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+            "price": 11.99,
+            "stock": 12
+          },
+          {
+            "color": "Black",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+            "price": 11.99,
+            "stock": 12
+          },
+          {
+            "color": "Khaki",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+            "price": 11.99,
+            "stock": 12
+          },
+          {
+            "color": "Khaki + Camo",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp",
+            "price": 11.99,
+            "stock": 12
+          }
+        ]
+      },
+      {
+        "size": "X-Large",
+        "colors": [
+          {
+            "color": "Army Green",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Army-Green.webp",
+            "price": 15.99,
+            "stock": 12
+          },
+          {
+            "color": "Black",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Black.webp",
+            "price": 15.99,
+            "stock": 12
+          },
+          {
+            "color": "Khaki",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-250x250.webp",
+            "price": 15.99,
+            "stock": 12
+          },
+          {
+            "color": "Khaki + Camo",
+            "image_url": "https://petdailykit.com/wp-content/uploads/2023/10/Adjustable-Dog-Collar-Khaki-Camo.webp",
+            "price": 15.99,
+            "stock": 12
+          }
+        ]
+      }
+    ]
+  }
+  

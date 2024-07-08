@@ -1,0 +1,25 @@
+:root {
+  --bluem: #031A6B;
+  --orangem: #FF9402;
+}
+
+body{
+  font-family: Outfit, Sans-serif;
+  color: var(--bluem);
+  /* background-color: #F7F9F9; */
+}
+a{
+  text-decoration: none;
+}
+.body-home {
+  background-color: #F7F9F9; /* Example color for home page */
+}
+/* 
+.body-shop {
+  background-color: #E8F0F2; /* Example color for shop page */
+/* } */ 
+
+/* Add more classes for other pages */
+.body-other {
+  background-color:  #F8FEFF; /* Example color for other pages */
+}
