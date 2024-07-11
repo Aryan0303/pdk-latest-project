@@ -17,6 +17,7 @@ import LatestNews from './Components/LatestNews/LatestNews';
 import Shoppage from './pages/Shop/SHOP';
 import ProductDetail from './pages/ProductDetailPage/Productdetail';
 import ViewCart from './pages/ViewCart/ViewCart'; // Import the new ViewCart component
+import Checkout from './pages/Checkout/Checkout'; // Import the new Checkout component
 
 import './App.css';
 
@@ -30,6 +31,11 @@ function App() {
       document.body.classList.add('body-other');
     }
   }, [location]);
+
+  const calculateTotal = () => {
+    // Your calculation logic here
+    return 23.98;
+  };
 
   return (
     <div className="App">
@@ -51,15 +57,16 @@ function App() {
           </>
         } />
         <Route path="/shop" element={<Shoppage />} />
-        <Route path="/shop/:id/:title" element={<ProductDetail />} />
-        
-        <Route path="/viewcart" element={<ViewCart />} /> {/* Add the new route */}
+        <Route path="/shop/:title" element={<ProductDetail />} />
+        <Route path="/viewcart" element={<ViewCart />} /> 
+        <Route path="/checkout" element={<Checkout calculateTotal={calculateTotal} />} /> 
       </Routes>
 
       <Footer />
     </div>
   );
 }
+
 
 export default App;
 

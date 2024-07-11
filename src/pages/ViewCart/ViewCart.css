@@ -9,7 +9,7 @@
   
   .cart-table th,
   .cart-table td {
-    text-align: center;
+    /* text-align: center; */
     vertical-align: middle;
     padding: 10px;
   }
@@ -81,4 +81,18 @@
     cursor: pointer;
   }
   
+  .coupon-input {
+    font-size: 1.3rem;
+    border-radius: 0px;
+  }
+
+  .row-below-cart-cart-page{
+    padding: 1em;
+    border: 0.05em solid #e0e0e0;
+  }
+  .cart-totals-heading{
+    padding: 1em 0em 1em 1em;
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #f7f6f7
+  }
   

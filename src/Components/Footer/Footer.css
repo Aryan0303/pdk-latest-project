@@ -9,10 +9,7 @@
     /* background-position: center; */
     /* padding: 20px 0; */
 }
-:root {
-    --bluem: #031A6B;
-    --orangem: #FF9402;
-  }
+
 
 .backgroundoffooter {
     background-image: url('../../images/footerbqackgroundd.png'); 

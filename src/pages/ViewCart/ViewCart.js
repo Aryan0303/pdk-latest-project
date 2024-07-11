@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Container, Table, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 import './ViewCart.css';
 
@@ -7,6 +8,7 @@ const ViewCart = () => {
   const { cart, updateCartItemQuantity, removeFromCart, onAddToCart } = useContext(CartContext);
   const [lastRemovedItem, setLastRemovedItem] = useState(null);
   const [showUpdateMessage, setShowUpdateMessage] = useState(false);
+  const navigate = useNavigate();
 
   const handleQuantityChange = (event, item) => {
     const value = Math.max(1, Number(event.target.value));
@@ -44,6 +46,10 @@ const ViewCart = () => {
     }, 3000);
   };
 
+  const handleProceedToCheckout = () => {
+    navigate('/checkout');
+  };
+
   return (
     <Container className="view-cart">
       {lastRemovedItem && (
@@ -67,7 +73,7 @@ const ViewCart = () => {
       )}
       {cart.length > 0 ? (
         <>
-          <Table bordered className="cart-table mt-5 d-none d-lg-table">
+          <Table bordered className="cart-table mt-5  mb-0 d-none d-lg-table">
             <thead>
               <tr>
                 <th></th>
@@ -137,7 +143,7 @@ const ViewCart = () => {
           </div>
 
           <div className="container">
-            <div className="row">
+            <div className="row row-below-cart-cart-page">
               <div className="d-none d-lg-block col-lg-2">
                 <div className="d-flex align-items-center">
                   <input type="text" placeholder="Coupon code" className="form-control coupon-input" />
@@ -148,22 +154,46 @@ const ViewCart = () => {
               </div>
               <div className="d-none d-lg-block col-lg-6"></div>
               <div className="d-none d-lg-block col-lg-2">
-                <button className="btn btn-secondary btn-block update-cart-btn" onClick={handleUpdateCart}>UPDATE CART</button>
+                <button className="btn  btn-block update-cart-btn" onClick={handleUpdateCart}>UPDATE CART</button>
               </div>
 
-              <div className="d-lg-none col-6">
+              <div className="d-lg-none col-6 mb-3">
                 <div className="d-flex align-items-center">
                   <input type="text" placeholder="Coupon code" className="form-control coupon-input" />
                 </div>
               </div>
-              <div className="d-lg-none col-6">
+              <div className="d-lg-none col-6 mb-3">
                 <button className="btn btn-primary btn-block apply-coupon-btn">APPLY COUPON</button>
               </div>
-
-              <div className="d-lg-none col-12">
-                <button className="btn btn-secondary btn-block update-cart-btn" onClick={handleUpdateCart}>UPDATE CART</button>
+              <div className="d-lg-none col-12 mb-3">
+                <button className="btn  btn-block update-cart-btn" onClick={handleUpdateCart}>UPDATE CART</button>
               </div>
             </div>
+
+            <div className="cart-totals col-md-6 ml-auto mt-4">
+              <h4 className="cart-totals-heading mb-0">Cart totals</h4>
+              <Table bordered className="cart-totals-table cart-table mb-3">
+                <tbody>
+                  <tr className="cart-subtotal">
+                    <td>Subtotal</td>
+                    <td>${calculateTotal()}</td>
+                  </tr>
+                  <tr className="cart-discount coupon-hot-summer-discount">
+                    <td>Hot Summer Discount</td>
+                    <td>-${(calculateTotal() * 0.3).toFixed(2)} <a href="#remove" className="remove-link">[Remove]</a></td>
+                  </tr>
+                  <tr className="tax-total">
+                    <td>Tax</td>
+                    <td>$0.00</td>
+                  </tr>
+                  <tr className="order-total">
+                    <td>Total</td>
+                    <td>${(calculateTotal() * 0.7).toFixed(2)}</td>
+                  </tr>
+                </tbody>
+              </Table>
+              <Button className="btn btn-block update-cart-btn mt-0" onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</Button>
+              </div>
           </div>
         </>
       ) : (
@@ -174,11 +204,15 @@ const ViewCart = () => {
           </div>
         </div>
       )}
-      <div className="total">
-        <h4>Total: ${calculateTotal()}</h4>
-      </div>
     </Container>
   );
 };
 
 export default ViewCart;
+
+
+
+
+
+
+

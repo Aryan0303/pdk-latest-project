@@ -21,7 +21,9 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar ml-5">
+         <h2 className="search-title mb-3 ml-1">Search</h2>
             <div className="search-bar">
+                
                 <input
                     type="text"
                     value={searchQuery}
@@ -42,6 +44,14 @@ const Sidebar = () => {
                     max={290}
                     value={priceRange}
                     onChange={handleSliderChange}
+                    renderTrack={(props, state) => {
+                        const { index } = state;
+                        if (index === 0) {
+                            return <div {...props} className="track track-left" />;
+                        } else if (index === 1) {
+                            return <div {...props} className="track track-right" />;
+                        }
+                    }}
                 />
                 <button className="filter-button">FILTER</button>
                 <p>Price: ${priceRange[0]} — ${priceRange[1]}</p>

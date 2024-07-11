@@ -1,0 +1,71 @@
+.checkout-container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h4, h5 {
+    margin-bottom: 20px;
+  }
+  
+  .order-table th, .order-table td {
+    text-align: left;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .credit-card-logos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .credit-card-logos img {
+    max-height: 30px;
+  }
+  
+  .remove-discount {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .order-table .total-row td {
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-container {
+      max-width: 100%;
+    }
+  
+    .order-table {
+      font-size: 0.9rem;
+    }
+  }
+  .order-table td {
+    background-color: transparent !important; 
+    border: none;
+    color: #031A6B;
+  }  
+  .order-table table {
+   border: none;
+  }  
+  .your-order{
+
+    border: 0.05em solid #e0e0e0;
+    padding: 2em;
+  }

@@ -11,7 +11,7 @@ import { CartContext } from '../../CartContext';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const { title } = useParams(); // Use title instead of id
   const navigate = useNavigate();
   const { onAddToCart } = useContext(CartContext);
   const [productDetails, setProductDetails] = useState({
@@ -40,7 +40,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/shop/${id}/details`);
+        const response = await axios.get(`http://localhost:5001/api/shop/title/${title}`);
         console.log('API response:', response.data); // Debugging
         const { sizes, mainImage, galleryImages, title, price, sku, category, shortDescription } = response.data;
 
@@ -73,7 +73,7 @@ const ProductDetail = () => {
     };
 
     fetchDetails();
-  }, [id]);
+  }, [title]); // Use title instead of id
 
   const handleImageClick = (image) => {
     setMainImage(image);
@@ -122,7 +122,7 @@ const ProductDetail = () => {
     } else {
       setQuantityError('');
       const selectedProduct = {
-        id,
+        id: title,
         image: mainImage,
         title: productDetails.title,
         price: selectedVariation.price,
@@ -151,7 +151,12 @@ const ProductDetail = () => {
     return <p>Error fetching product details: {error}</p>;
   }
 
-  const { title, price, galleryImages, sizes, selectedSize, sku, category, shortDescription } = productDetails;
+  const { title: productTitle, price, galleryImages, sizes, selectedSize, sku, category, shortDescription, SKU, subcategory } = productDetails;
+
+  // Calculate minPrice and maxPrice
+  const prices = productDetails.sizes.flatMap(size => size.colors.map(color => color.price));
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
 
   const responsive = {
     desktop: {
@@ -208,7 +213,8 @@ const ProductDetail = () => {
           </Col>
           <Col xs={12} md={8}>
             <div className="product-details p-3">
-              <h2 className='title-pd'>{title}</h2>
+              <h2 className='title-pd'>{productTitle}</h2>
+              <p>{`$${minPrice} – $${maxPrice}`}</p>
               <p className="product-price-pd">{price}</p>
               <div className="product-options">
                 <div className="option-group">
@@ -233,7 +239,7 @@ const ProductDetail = () => {
                     {sizes.map((size, index) => (
                       <Button
                         key={index}
-                        className={`color-button ${selectedSize && selectedSize.size === size.size ? 'selected-color-button' : ''}`}
+                        className={`size-button ${selectedSize && selectedSize.size === size.size ? 'selected-size-button' : ''}`}
                         onClick={() => handleSizeClick(size)}
                       >
                         {size.size}
@@ -242,40 +248,39 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="selected-variation-details p-3">
-              <p className="product-price-pd-in">
-                ${selectedVariation.price}
-              </p>
-              <p className={`product-stock-pd ${stockClass}`}>
-                Availability: {stockText}
-              </p>
-              <Form className="product-quantity">
-                <Form.Group>
-                  <Form.Label className='label-'>Quantity:</Form.Label>
+              <div className="stock">
+                <p className={stockClass}>{stockText}</p>
+              </div>
+              <div className="d-flex align-items-center mb-3">
+                <Form.Group controlId="formQuantity" className="mb-0 mr-3">
                   <Form.Control
                     type="number"
                     value={quantity}
                     onChange={handleQuantityChange}
-                    min="1"
+                    min={1}
                     className="quantity-input"
                   />
                 </Form.Group>
-              </Form>
+                <Button
+                  variant="primary"
+                  className="add-to-cart-button"
+                  onClick={handleAddToCart}
+                  disabled={stock === 0}
+                >
+                  Add to Cart
+                </Button>
+              </div>
               {quantityError && <p className="text-danger">{quantityError}</p>}
-              <Button
-                className="add-to-cart-button mt-3"
-                onClick={handleAddToCart}
-                disabled={stock === 0}
-              >
-                Add to Cart
-              </Button>
+            </div>
+            <div className="sku-and-subcategories">
+              <p className="sku">SKU: {SKU}</p>
+              {/* <p className="subcategories">Subcategories: {subcategory.join(', ')}</p> */}
             </div>
           </Col>
         </Row>
-        <Row className="mt-4">
+        <Row>
           <Col>
-            <Tabs defaultActiveKey="description" id="product-detail-tabs">
+            <Tabs defaultActiveKey="description" id="uncontrolled-tab-example" className="mt-3">
               <Tab eventKey="description" title="Description">
                 <p>{shortDescription}</p>
               </Tab>

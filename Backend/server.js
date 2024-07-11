@@ -54,6 +54,23 @@ app.get('/api/shop/title/:title', (req, res) => {
     } else if (result.length === 0) {
       res.status(404).json({ error: 'Product not found' });
     } else {
+      // Send the product details
+      res.json(result[0]);
+    }
+  });
+});
+
+
+app.get('/api/shop/title/:title', (req, res) => {
+  const title = decodeURIComponent(req.params.title);
+  const sql = 'SELECT * FROM products WHERE product_title = ?';
+  
+  db.query(sql, [title], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else if (result.length === 0) {
+      res.status(404).json({ error: 'Product not found' });
+    } else {
       const product = result[0];
       const productId = product.id;
 
@@ -137,6 +154,7 @@ app.get('/api/shop/title/:title', (req, res) => {
     }
   });
 });
+
 
 // Add a product
 app.post('/shop', (req, res) => {

@@ -6,13 +6,13 @@ import './ShopProductCard.css';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const {id, title, mainImage, minPrice, maxPrice } = product;
+  const { title, mainImage, minPrice, maxPrice } = product;
 
   // Format title for URL
   const formattedTitle = title.replace(/\s+/g, '-');
 
   const handleCardClick = () => {
-    navigate(`/shop/${id}/${formattedTitle}`);
+    navigate(`/shop/${formattedTitle}`);
   };
 
   return (

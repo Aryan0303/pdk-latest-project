@@ -81,6 +81,7 @@ border:  3px solid black !important;
 .quantity-input {
   width: 60px;
   text-align: center;
+  border-radius: 0;
 }
 
 .add-to-cart-button {
