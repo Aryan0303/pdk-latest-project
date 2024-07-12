@@ -45,113 +45,121 @@ app.get('/shop/:id', (req, res) => {
   });
 });
 
-// Get a single product by title
 app.get('/api/shop/title/:title', (req, res) => {
-  const sql = 'SELECT * FROM products WHERE product_title = ?';
-  db.query(sql, [req.params.title], (err, result) => {
-    if (err) {
-      res.status(500).json({ error: err });
-    } else if (result.length === 0) {
-      res.status(404).json({ error: 'Product not found' });
-    } else {
-      // Send the product details
-      res.json(result[0]);
+  // Replace hyphens with spaces
+  const title = req.params.title.replace(/-/g, ' ');
+  const productQuery = 'SELECT * FROM products WHERE product_title = ?';
+  const subcategoryQuery = 'SELECT name AS subcategory_name FROM subcategories WHERE id = ?';
+  const categoryQuery = 'SELECT name AS category_name FROM categories WHERE id = ?';
+
+  db.query(productQuery, [title], (errProduct, resultProduct) => {
+    if (errProduct) {
+      return res.status(500).json({ error: errProduct.message });
     }
-  });
-});
+    if (resultProduct.length === 0) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
 
+    const product = resultProduct[0];
+    const productId = product.id;
 
-app.get('/api/shop/title/:title', (req, res) => {
-  const title = decodeURIComponent(req.params.title);
-  const sql = 'SELECT * FROM products WHERE product_title = ?';
-  
-  db.query(sql, [title], (err, result) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else if (result.length === 0) {
-      res.status(404).json({ error: 'Product not found' });
-    } else {
-      const product = result[0];
-      const productId = product.id;
+    const sizesQuery = 'SELECT id, size FROM sizes WHERE product_id = ?';
+    const colorsQuery = `
+      SELECT c.id AS color_id, c.color, c.image_url
+      FROM variations v
+      JOIN colors c ON v.color_id = c.id
+      WHERE v.product_id = ? AND v.size_id = ?
+    `;
+    const variationsQuery = `
+      SELECT v.size_id, v.color_id, v.price, v.stock
+      FROM variations v
+      WHERE v.product_id = ?
+    `;
+    const priceQuery = `
+      SELECT MIN(price) AS min_price, MAX(price) AS max_price
+      FROM variations
+      WHERE product_id = ?
+    `;
 
-      const sizesQuery = 'SELECT id, size FROM sizes WHERE product_id = ?';
-      const colorsQuery = `
-        SELECT c.id AS color_id, c.color, c.image_url
-        FROM variations v
-        JOIN colors c ON v.color_id = c.id
-        WHERE v.product_id = ? AND v.size_id = ?
-      `;
-      const variationsQuery = `
-        SELECT v.size_id, v.color_id, v.price, v.stock
-        FROM variations v
-        WHERE v.product_id = ?
-      `;
-      const priceQuery = `
-        SELECT MIN(price) AS min_price, MAX(price) AS max_price
-        FROM variations
-        WHERE product_id = ?
-      `;
+    db.query(sizesQuery, [productId], (errSizes, resultSizes) => {
+      if (errSizes) {
+        return res.status(500).json({ error: errSizes.message });
+      }
 
-      db.query(sizesQuery, [productId], (errSizes, resultSizes) => {
-        if (errSizes) {
-          return res.status(500).json({ error: errSizes.message });
-        }
+      const sizes = resultSizes;
 
-        const sizes = resultSizes;
-
-        const colorPromises = sizes.map(size => {
-          return new Promise((resolve, reject) => {
-            db.query(colorsQuery, [productId, size.id], (errColors, resultColors) => {
-              if (errColors) {
-                return reject(errColors);
+      const colorPromises = sizes.map(size => {
+        return new Promise((resolve, reject) => {
+          db.query(colorsQuery, [productId, size.id], (errColors, resultColors) => {
+            if (errColors) {
+              return reject(errColors);
+            }
+            db.query(variationsQuery, [productId], (errVariations, resultVariations) => {
+              if (errVariations) {
+                return reject(errVariations);
               }
-              db.query(variationsQuery, [productId], (errVariations, resultVariations) => {
-                if (errVariations) {
-                  return reject(errVariations);
-                }
-                const sizeColors = resultColors.map(color => {
-                  const variation = resultVariations.find(v => v.size_id === size.id && v.color_id === color.color_id);
-                  return {
-                    color: color.color,
-                    image_url: color.image_url,
-                    price: variation ? variation.price : null,
-                    stock: variation ? variation.stock : 'Out of Stock'
-                  };
-                });
-                resolve({
-                  size: size.size,
-                  colors: sizeColors
-                });
+              const sizeColors = resultColors.map(color => {
+                const variation = resultVariations.find(v => v.size_id === size.id && v.color_id === color.color_id);
+                return {
+                  color: color.color,
+                  image_url: color.image_url,
+                  price: variation ? variation.price : null,
+                  stock: variation ? variation.stock : 'Out of Stock'
+                };
+              });
+              resolve({
+                size: size.size,
+                colors: sizeColors
               });
             });
           });
         });
-
-        db.query(priceQuery, [productId], (errPrice, resultPrice) => {
-          if (errPrice) {
-            return res.status(500).json({ error: errPrice.message });
-          }
-
-          const { min_price, max_price } = resultPrice[0];
-
-          Promise.all(colorPromises)
-            .then(sizesWithColors => {
-              const mainImage = sizesWithColors[0]?.colors[0]?.image_url || null;
-              const galleryImages = sizesWithColors.flatMap(size => size.colors.map(color => color.image_url));
-              const response = {
-                ...product,
-                price_min: min_price,
-                price_max: max_price,
-                mainImage,
-                galleryImages,
-                sizes: sizesWithColors
-              };
-              res.json(response);
-            })
-            .catch(err => res.status(500).json({ error: err.message }));
-        });
       });
-    }
+
+      db.query(priceQuery, [productId], (errPrice, resultPrice) => {
+        if (errPrice) {
+          return res.status(500).json({ error: errPrice.message });
+        }
+
+        const { min_price, max_price } = resultPrice[0];
+
+        Promise.all(colorPromises)
+          .then(sizesWithColors => {
+            const mainImage = sizesWithColors[0]?.colors[0]?.image_url || null;
+            const galleryImages = sizesWithColors.flatMap(size => size.colors.map(color => color.image_url));
+
+            // Fetch subcategory name
+            db.query(subcategoryQuery, [product.subcategory_id], (errSubcategory, resultSubcategory) => {
+              if (errSubcategory) {
+                return res.status(500).json({ error: errSubcategory.message });
+              }
+              const subcategory_name = resultSubcategory[0]?.subcategory_name || null;
+
+              // Fetch category name
+              db.query(categoryQuery, [product.category_id], (errCategory, resultCategory) => {
+                if (errCategory) {
+                  return res.status(500).json({ error: errCategory.message });
+                }
+                const category_name = resultCategory[0]?.category_name || null;
+
+                // Construct the final response object
+                const response = {
+                  ...product,
+                  price_min: min_price,
+                  price_max: max_price,
+                  mainImage,
+                  galleryImages,
+                  sizes: sizesWithColors,
+                  subcategory_name,
+                  category_name
+                };
+                res.json(response);
+              });
+            });
+          })
+          .catch(err => res.status(500).json({ error: err.message }));
+      });
+    });
   });
 });
 
@@ -279,11 +287,6 @@ app.get('/api/shop/:id/details', (req, res) => {
               title: product.product_title,
               minPrice: min_price,
               maxPrice: max_price,
-              sku: product.SKU,
-              shortDescription: product.short_description,
-              longDescription: product.long_description,
-              category: product.category_id,
-              subcategory: product.subcategory_id,
               mainImage,
               galleryImages,
               sizes: sizesWithColors
@@ -296,20 +299,5 @@ app.get('/api/shop/:id/details', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5001;
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-// Close MySQL connection when Node.js process terminates
-process.on('SIGINT', () => {
-  db.end(err => {
-    if (err) {
-      return console.error('Error closing database connection:', err.message);
-    }
-    console.log('Closed database connection');
-    process.exit(0); // Exit Node.js process
-  });
-});
+const port = 5001;
+app.listen(port, () => console.log(`Server running on port ${port}`));

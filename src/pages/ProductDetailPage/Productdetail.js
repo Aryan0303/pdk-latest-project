@@ -7,22 +7,22 @@ import MainImage from './Components/MainImage/MainImage';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { CartContext } from '../../CartContext';
-
 import './ProductDetail.css';
 
 const ProductDetail = () => {
-  const { title } = useParams(); // Use title instead of id
+  const { title } = useParams();
   const navigate = useNavigate();
   const { onAddToCart } = useContext(CartContext);
   const [productDetails, setProductDetails] = useState({
     sizes: [],
     selectedSize: null,
-    title: '',
+    titleSecondary: '',
     price: '',
     sku: '',
-    category: '',
+    subcategory: '',
     galleryImages: [],
-    shortDescription: ''
+    shortDescription: '',
+    longDescription: ''
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -40,19 +40,32 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/shop/title/${title}`);
-        console.log('API response:', response.data); // Debugging
-        const { sizes, mainImage, galleryImages, title, price, sku, category, shortDescription } = response.data;
+        const formattedTitle = title.replace(/-/g, ' ');
+        const response = await axios.get(`http://localhost:5001/api/shop/title/${encodeURIComponent(formattedTitle)}`);
+        console.log('API response:', response.data);
+        const {
+          sizes,
+          mainImage,
+          galleryImages,
+          title: titleSecondary,
+          price_min,
+          price_max,
+          SKU,
+          subcategory_name,
+          short_description,
+          long_description
+        } = response.data;
 
         setProductDetails({
           sizes: sizes || [],
           selectedSize: sizes && sizes.length > 0 ? sizes[0] : null,
-          title,
-          price,
-          sku,
-          category,
+          titleSecondary,
+          price: `${price_min} – ${price_max}`,
+          sku: SKU,
+          subcategory: subcategory_name,
           galleryImages,
-          shortDescription: shortDescription || ''
+          shortDescription: short_description || '',
+          longDescription: long_description || ''
         });
 
         if (sizes && sizes.length > 0 && sizes[0].colors.length > 0) {
@@ -73,7 +86,7 @@ const ProductDetail = () => {
     };
 
     fetchDetails();
-  }, [title]); // Use title instead of id
+  }, [title]);
 
   const handleImageClick = (image) => {
     setMainImage(image);
@@ -124,7 +137,7 @@ const ProductDetail = () => {
       const selectedProduct = {
         id: title,
         image: mainImage,
-        title: productDetails.title,
+        titleSecondary: productDetails.titleSecondary,
         price: selectedVariation.price,
         size: productDetails.selectedSize.size,
         color: selectedVariation.color,
@@ -134,7 +147,7 @@ const ProductDetail = () => {
       onAddToCart(selectedProduct);
       console.log('Selected product:', selectedProduct);
 
-      setSuccessMessage(`"${productDetails.title}" has been added to your cart.`);
+      setSuccessMessage(`"${productDetails.titleSecondary}" has been added to your cart.`);
       setShowSuccessMessage(true);
     }
   };
@@ -151,9 +164,8 @@ const ProductDetail = () => {
     return <p>Error fetching product details: {error}</p>;
   }
 
-  const { title: productTitle, price, galleryImages, sizes, selectedSize, sku, category, shortDescription, SKU, subcategory } = productDetails;
+  const { price, galleryImages, sizes, selectedSize, sku, subcategory, shortDescription, longDescription } = productDetails;
 
-  // Calculate minPrice and maxPrice
   const prices = productDetails.sizes.flatMap(size => size.colors.map(color => color.price));
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
@@ -179,7 +191,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Breadcrumbs title={productDetails.title} />
+      <Breadcrumbs title={productDetails.titleSecondary} />
       {showSuccessMessage && (
         <div className="success-message viewcart-msg d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
@@ -213,12 +225,12 @@ const ProductDetail = () => {
           </Col>
           <Col xs={12} md={8}>
             <div className="product-details p-3">
-              <h2 className='title-pd'>{productTitle}</h2>
+              <h2 className="title-pd">{title}</h2>
               <p>{`$${minPrice} – $${maxPrice}`}</p>
               <p className="product-price-pd">{price}</p>
               <div className="product-options">
                 <div className="option-group">
-                  <p className='label-'>Color:</p>
+                  <p className="label-">Color:</p>
                   <span className="selected-option ml-2">{selectedVariation.color}</span>
                   <div className="option-buttons">
                     {selectedSize && selectedSize.colors.map((color, index) => (
@@ -233,13 +245,13 @@ const ProductDetail = () => {
                   </div>
                 </div>
                 <div className="option-group">
-                  <p className='label-'>Size:</p>
+                  <p className="label-">Size:</p>
                   <span className="selected-option ml-2">{selectedSize ? selectedSize.size : 'Select a size'}</span>
                   <div className="option-buttons">
                     {sizes.map((size, index) => (
                       <Button
                         key={index}
-                        className={`size-button ${selectedSize && selectedSize.size === size.size ? 'selected-size-button' : ''}`}
+                        className={`color-button ${selectedSize && selectedSize.size === size.size ? 'selected-color-button' : ''}`}
                         onClick={() => handleSizeClick(size)}
                       >
                         {size.size}
@@ -248,9 +260,14 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className="stock">
-                <p className={stockClass}>{stockText}</p>
-              </div>
+            </div>
+            <div className="selected-variation-details p-3">
+              <p className="product-price-pd-in">
+                ${selectedVariation.price}
+              </p>
+              <p className={`product-stock-pd ${stockClass}`}>
+                Availability: {stockText}
+              </p>
               <div className="d-flex align-items-center mb-3">
                 <Form.Group controlId="formQuantity" className="mb-0 mr-3">
                   <Form.Control
@@ -272,24 +289,39 @@ const ProductDetail = () => {
               </div>
               {quantityError && <p className="text-danger">{quantityError}</p>}
             </div>
-            <div className="sku-and-subcategories">
-              <p className="sku">SKU: {SKU}</p>
-              {/* <p className="subcategories">Subcategories: {subcategory.join(', ')}</p> */}
+            <div className="sku-subcategory p-3 d-flex justify-content-between align-items-center">
+              <p className="mb-0 mr-3"><strong>SKU:</strong> {sku}</p>
+              <p className="mb-0 mr-auto"><strong>Subcategory:</strong> {subcategory}</p>
             </div>
+            <div className="short-description">
+                <p><strong>Short Description:</strong></p>
+                <ul>
+                  {shortDescription.split('\n').map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Tabs defaultActiveKey="description" id="uncontrolled-tab-example" className="mt-3">
-              <Tab eventKey="description" title="Description">
-                <p>{shortDescription}</p>
-              </Tab>
-            </Tabs>
+          <Tabs defaultActiveKey="description" id="uncontrolled-tab-example" className="mt-3 product-tabs" variant="pills">
+        <Tab eventKey="description" title="Description">
+          <p>{longDescription}</p>
+        </Tab>
+        <Tab eventKey="additional-info" title="Additional Information">
+          <p>Additional information about the product goes here.</p>
+        </Tab>
+        <Tab eventKey="reviews" title="Reviews">
+          <p>Customer reviews will be displayed here.</p>
+        </Tab>
+      </Tabs>
           </Col>
         </Row>
       </Container>
     </>
   );
 };
+
 
 export default ProductDetail;
