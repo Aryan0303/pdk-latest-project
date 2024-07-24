@@ -102,18 +102,18 @@ const CustomNavbar = () => {
           <Navbar.Toggle aria-controls="mainNavbar" />
           <Navbar.Collapse id="mainNavbar">
             <Nav className="ml-auto mr-auto">
-              <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
+              <Nav.Link as={Link} to="/shop" className='mx-2'>Shop</Nav.Link>
               <CustomDropdown title="Dogs" items={dropdownItemsDogs} />
               <CustomDropdown title="Cats" items={dropdownItemsCats} />
               <CustomDropdown title="Fish" items={dropdownItemsFish} />
               <CustomDropdown title="Small Pets" items={dropdownItemsSmallPets} />
               <CustomDropdown title="Reptiles" items={dropdownItemsReptiles} />
             </Nav>
-            <Nav>
-              <Nav.Link href="#"><i className="fas fa-search fa-lg"></i></Nav.Link>
-              <Nav.Link href="#"><i className="fas fa-user fa-lg"></i></Nav.Link>
-              <Nav.Link href="#"><i className="fa-regular fa-heart fa-lg"></i></Nav.Link>
-              <Nav.Link href="#" className="position-relative" onClick={handleCartShow}>
+            <Nav className='mr-5'>
+              <Nav.Link href="#"><i className="fas fa-search fa-lg mr-1"></i></Nav.Link>
+              <Nav.Link href="#"><i className="fas fa-user fa-lg mr-1"></i></Nav.Link>
+              <Nav.Link href="#"><i className="fa-regular fa-heart fa-lg mr-1"></i></Nav.Link>
+              <Nav.Link href="#" className="position-relative mr-1" onClick={handleCartShow}>
                 <i className="fas fa-shopping-cart fa-lg"></i>
                 <span className="badge badge-pill badge-deskptop">{cart.length}</span>
               </Nav.Link>

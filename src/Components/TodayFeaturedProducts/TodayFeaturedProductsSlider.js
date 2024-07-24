@@ -26,11 +26,12 @@ const responsive = {
 
 const ProductSlider = () => {
   return (
-    <Container style={{ backgroundColor: '#FF9402', padding: '20px' }}>
+    <div className='m-4' style={{ backgroundColor: '#FF9402', padding: '20px' }}>
     <h2 className='textHeading text-center mb-4' style={{ color: '#031A6B' }}>
       Today’s Featured Products
     </h2>
       <Carousel
+        className='ml-3 tdfp-carousel'
         responsive={responsive}
         // autoPlay
         // autoPlaySpeed={3000} 
@@ -44,7 +45,7 @@ const ProductSlider = () => {
           </div>
         ))}
       </Carousel>
-    </Container>
+    </div>
   );
 };
 

@@ -307,13 +307,13 @@ const ProductDetail = () => {
           <Col>
           <Tabs defaultActiveKey="description" id="uncontrolled-tab-example" className="mt-3 product-tabs" variant="pills">
         <Tab eventKey="description" title="Description">
-          <p>{longDescription}</p>
+          <p className='my-3'>{longDescription}</p>
         </Tab>
         <Tab eventKey="additional-info" title="Additional Information">
-          <p>Additional information about the product goes here.</p>
+          <p className='my-3'>Additional information about the product goes here.</p>
         </Tab>
         <Tab eventKey="reviews" title="Reviews">
-          <p>Customer reviews will be displayed here.</p>
+          <p className='my-3'>Customer reviews will be displayed here.</p>
         </Tab>
       </Tabs>
           </Col>

@@ -6,7 +6,7 @@ const TopBar = () => {
     <>
       {/* Navigation bar for desktop */}
       <nav className="navbar top-back navbar-expand-md navbar-custom d-none d-md-block">
-        <div className="container topbody1">
+        <div className="container topbody1 pt-2">
           <span className=" text-white desktop-top-tx"> ☆ Free Shipping On $35 ☆ </span>
           <ul className="navbar-nav ml-auto align-items-end">
             <li className="nav-item">

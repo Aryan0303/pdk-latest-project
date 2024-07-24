@@ -51,17 +51,18 @@ const CustomCarousel = () => {
         <Row>
           <Col>
             <h2 className="textHeading">Our Top Quality Pet Supplies</h2>
-            <p className="text-secondary mt-1 mb-5">
+            <p className="text-secondary mt-1 mb-5 mx-lg-5">
               At <strong className='textbold'>Pet Daily Kit</strong>, the well-being of pets is our top priority. 
               We make sure that all products must meet top quality and safety standards. 
               Every product is carefully selected and tested to ensure that it provides the 
               best experience for pets and peace of mind for pet owners. 
               Pet Daily Kit is committed to delivering top-quality pet supplies in every aspect of their offerings.
             </p>
-            <h2 className="textHeading">Top Products</h2>
+            <h2 className="textHeading mb-4">Top Products</h2>
           </Col>
         </Row>
       </Container>
+
     </>
   );
 };

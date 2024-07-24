@@ -5,7 +5,7 @@
   
   /* Default styling for desktop */
   .old-product-card {
-    width: 9.5rem !important;
+    width: 10rem !important;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
       width: 50%;
     }
     .old-product-card {
-      width: 13rem !important;
+      width: 13rem ;
     }
   }
   

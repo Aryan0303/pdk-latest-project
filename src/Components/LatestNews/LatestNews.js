@@ -9,7 +9,7 @@ import img5 from '../../images/latestnewimsg (5).webp';
 
 const LatestNews = () => {
   return (
-    <Container className="my-5">
+    <div className="m-4 mx-5">
       <Row className="justify-content-between align-items-center mb-4">
         <h2 className="text-center flex-grow-1">Latest News<span><a href="/discover-more" className="text-decoration-none text-danger">Discover More →</a></span></h2>
       </Row>
@@ -29,7 +29,7 @@ const LatestNews = () => {
                   <div className="text-overlay">
                     <h5>Anxiety Busters: Essential Approaches for Relaxing Your Pet</h5>
                     <p>As pet owners, one of our obligations is to safeguard...</p>
-                    <Button className='btn-ln'>Read More</Button>
+                    <button className='btn-ln'>Read More</button>
                   </div>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const LatestNews = () => {
           </Row>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

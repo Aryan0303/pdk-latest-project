@@ -2,28 +2,25 @@ import React, { useState } from 'react';
 import './SideBar.css';
 import Slider from 'react-slider';
 
-const Sidebar = () => {
+const Sidebar = ({ searchQuery, onSearchChange }) => {
     const [priceRange, setPriceRange] = useState([0, 290]);
-    const [searchQuery, setSearchQuery] = useState('');
 
     const handleSliderChange = (values) => {
         setPriceRange(values);
     };
 
     const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
+        onSearchChange(event.target.value);
     };
 
     const handleSearch = () => {
-        // Implement search functionality here
         console.log('Search query:', searchQuery);
     };
 
     return (
         <div className="sidebar ml-5">
-         <h2 className="search-title mb-3 ml-1">Search</h2>
+            <h2 className="search-title mb-3 ml-1">Search</h2>
             <div className="search-bar">
-                
                 <input
                     type="text"
                     value={searchQuery}
@@ -63,6 +60,10 @@ const Sidebar = () => {
                     <li>Cat Supplies <span>(139)</span></li>
                     <li>Dog Supplies <span>(161)</span></li>
                     <li>Fish Supplies <span>(1)</span></li>
+                    <li>Reptiles<span>(2)</span></li>
+                    <li>Small Pets <span>(5)</span></li>
+
+
                 </ul>
             </div>
         </div>

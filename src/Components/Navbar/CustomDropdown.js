@@ -22,7 +22,7 @@ const CustomDropdown = ({ title, items }) => {
     };
   
     return (
-      <MDBDropdown className="custom-dropdown" isOpen={show} toggle={handleToggle}>
+      <MDBDropdown className="custom-dropdown mx-2" isOpen={show} toggle={handleToggle}>
         <MDBDropdownToggle tag="a" className="custom-dropdown-toggle nav-link">
           {title} <MDBIcon fas icon="chevron-down" />
         </MDBDropdownToggle>

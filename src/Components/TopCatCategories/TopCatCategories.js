@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import ProductCard from '../TopDogCategories/tdcproductcard';
 import TopcatCategoriesdata from '../../Data/TopCatCategoriesdata';
@@ -7,9 +7,9 @@ import '../TopDogCategories/tdcategories.css';
  
 const TopcatCategories = () => {
   return (
-    <Container className='mt-5'>
+    <div className='m-4'>
       <h2 className='textHeading text-center mb-4' style={{ color: '#031A6B', textAlign: 'center', marginBottom: '20px' }}>
-      Top <span style={{ color: '#FF9402'}}>Cats</span>Categories
+      Top <span style={{ color: '#FF9402'}}>Cats </span>Categories
     </h2>
       <Row>
         {TopcatCategoriesdata.slice(0, 6).map((product) => (
@@ -18,7 +18,7 @@ const TopcatCategories = () => {
           </div>
         ))}
       </Row>
-    </Container>
+    </div>
   );
 };
 

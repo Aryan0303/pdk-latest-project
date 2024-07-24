@@ -28,7 +28,7 @@ const Footer = () => {
                     <input type="email" className="form-control emailTtext" id="email" placeholder="Email" />
                   </div>
                   
-                  <button type="submit" className="btn-foot p-2 mb-2 ml-2">SUBSCRIBE</button>
+                  <button type="submit" className="btn-foot p-2 mb-2 ">SUBSCRIBE</button>
                 </form>
               </div>
               {/* Second Image Column */}
@@ -129,7 +129,7 @@ const Footer = () => {
                     <label htmlFor="email" className="sr-only">Email</label>
                     <input type="email" className="form-control emailTtext-ft" id="email" placeholder="Email" />
                   </div>
-                  <button type="submit" className="btn-foot p-2 mb-2 ml-2">SUBSCRIBE</button>
+                  <button type="submit" className="btn-foot p-2 mb-2">SUBSCRIBE</button>
                 </form>
               </div>
                 <div className="col-md-12 text-center">

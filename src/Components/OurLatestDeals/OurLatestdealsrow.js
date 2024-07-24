@@ -7,18 +7,18 @@ import './OurLatestDeals.css';
 
 const OurLatestdealsrow = () => {
     return (
-        <Container>
+        <div className='m-4'>
           <h2 className='textHeading text-center mb-4' style={{ color: '#031A6B', textAlign: 'center', marginBottom: '20px' }}>
           Our Latest <span style={{ color: '#FF9402'}}>Deals</span>
         </h2>
-          <Row>
+          <Row className='ml-1'>
             {OurLatestdealsDATA.slice(0, 8).map((product) => (
               <div key={product.id} className="custom-col-oldeals mb-2">
                 <ProductCard product={product} />
               </div>
             ))}
           </Row>
-        </Container>
+        </div >
       );
 }
 

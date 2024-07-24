@@ -6,7 +6,7 @@ import ProductCard from './ShopProductCard';
 import './ShopProductCard.css';
 import './Pagination.css';
 
-const ShopProducts = () => {
+const ShopProducts = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
@@ -30,11 +30,15 @@ const ShopProducts = () => {
     fetchProducts();
   }, []);
 
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
   const paginate = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
@@ -96,11 +100,15 @@ const ShopProducts = () => {
   return (
     <Container className="shop-products">
       <Row>
-        {currentItems.map(product => (
-          <Col key={product.id} xs={6} md={4} lg={3}>
-            <ProductCard product={product} />
-          </Col>
-        ))}
+        {currentItems.length > 0 ? (
+          currentItems.map(product => (
+            <Col key={product.id} xs={6} md={4} lg={3}>
+              <ProductCard product={product} />
+            </Col>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </Row>
       <Pagination className="custom-pagination">
         <Pagination.First onClick={() => paginate(1)} />

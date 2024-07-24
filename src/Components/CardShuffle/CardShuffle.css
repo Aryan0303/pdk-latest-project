@@ -60,11 +60,15 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
-.custom-button {
+.custom-button-3-cards {
     background-color: var(--bluem);
-    border: 1px solid white; 
+    border: none;
     color: white;
-    border-radius: 0; 
+    border-radius: 5px; 
+}
+.custom-button-3-cards:hover{
+    background-color: #FF9402;
+    color: white;
 }
 
 @media (max-width: 767px) {

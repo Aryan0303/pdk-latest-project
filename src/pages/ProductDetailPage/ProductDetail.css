@@ -169,3 +169,7 @@ button.btn.btn-viewcart-button:hover{
   border-top: 3px solid #031A6B;
   color: #000;
 }
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  /* color: var(--bs-nav-pills-link-active-color); */
+  background-color: #ffffff !important;
+}

@@ -26,6 +26,8 @@ const responsive = {
 const ProductSlider = () => {
   return (
     <Carousel
+
+      className= "craousel mx-3"
       responsive={responsive}
       autoPlay
       autoPlaySpeed={3000} 
